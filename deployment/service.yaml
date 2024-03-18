@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2024-03-18T09:23:25Z"
+  labels:
+    app: hartmannm-svc
+  name: hartmannm-svc
+  namespace: default
+spec:
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: 80-8080
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: hartmannm-svc
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: {}
