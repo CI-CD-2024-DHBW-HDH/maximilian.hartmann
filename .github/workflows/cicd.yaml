@@ -1,4 +1,4 @@
-name: pipeline
+name: cicd pipeline
 run-name: ${{ github.actor }} is pushing on master branch
 on:
   push:
@@ -7,15 +7,10 @@ on:
   pull_request:
     branches:
       - master
-env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
 permissions:
   contents: write
-  packages: write
 jobs:
   build-and-deploy:
-    concurrency: ci-${{ github.ref }} 
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -33,4 +28,4 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: .
+          folder: dist
