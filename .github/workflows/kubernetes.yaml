@@ -17,15 +17,15 @@ jobs:
         with:
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
       - name: Create namespace
-        run: kubectl create namespace maximilian.hartmann --dry-run=client -o yaml | kubectl apply -f -
+        run: kubectl create namespace maximilian-hartmann --dry-run=client -o yaml | kubectl apply -f -
       - name: Deploy
         run: |
-          kubectl apply -n maximilian.hartmann -f deployment/deployment.yaml
-          kubectl apply -n maximilian.hartmann -f deployment/service.yaml
+          kubectl apply -n maximilian-hartmann -f deployment/deployment.yaml
+          kubectl apply -n maximilian-hartmann -f deployment/service.yaml
       - name: Set imagePullSecret
         uses: azure/k8s-create-secret@v4
         with:
-          namespace: 'maximilian.hartmann'
+          namespace: 'maximilian-hartmann'
           secret-name: 'regcred'
           container-registry-url: 'ghcr.io'
           container-registry-username: ${{ github.actor }}
