@@ -5,7 +5,7 @@ metadata:
   labels:
     app: hartmannm-svc
   name: hartmannm-svc
-  namespace: default
+  namespace: maximilian-hartmann
 spec:
   externalTrafficPolicy: Cluster
   internalTrafficPolicy: Cluster
