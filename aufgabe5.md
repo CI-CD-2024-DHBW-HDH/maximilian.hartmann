@@ -11,5 +11,6 @@
 - kann über NodePort die Pods von außerhalb erreichbar machen
 
 ## Wege, wie man eine Kubernetes Anwendung von außen erreichen kann:
-- über Service (NodePort)
-- ingress definieren
+- NodePort
+- LoadBalancer
+- Ingress-Controller
