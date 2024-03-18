@@ -1,0 +1,21 @@
+name: Basic ci pipeline
+run-name: ${{ github.actor }} is pushing on main-branch
+on: [push]
+jobs:
+  ci-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Install Dependencies
+        run: npm i
+      - name: Svelte check
+        run: npm run check
+      - name: format check
+        run: npm run format:check
+      - name: eslint check
+        run: npm run lint
+      - name: Run Tests
+        run: npm run test
+      - name: Build
+        run: npm run build
