@@ -1,0 +1,21 @@
+name: Basic CI action
+run-name: ${{ github.actor }} is pushing on master-branch
+on: [push]
+jobs:
+  Build-on-Push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Install Dependencies
+        run: npm i
+      - name: Svelte check
+        run: npm run check
+      - name: format check
+        run: npm run format:check
+      - name: eslint check
+        run: npm run lint
+      - name: Run Tests
+        run: npm run test
+      - name: Build
+        run: npm run build
